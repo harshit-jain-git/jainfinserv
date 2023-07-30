@@ -662,8 +662,7 @@ svg path {
 }
 
 #hero .wrapper .photographer img {
-    vertical-align: center;
-    width: 100%;
+    width: auto;
     opacity: .95
 }
 

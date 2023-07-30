@@ -1,8 +1,6 @@
-import json
 import os
 
-from flask import Flask, make_response, render_template, request
-from flask_cors import cross_origin
+from flask import Flask, make_response, render_template
 
 app = Flask(__name__,
 			static_url_path='',
@@ -22,10 +20,10 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1800
 @app.route("/", methods=['GET'])
 def index():
 	response = make_response(render_template('index.html',))
-	# response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-	# response.headers['X-Content-Type-Options'] = 'nosniff'
-	# response.headers['X-Frame-Options'] = 'SAMEORIGIN'
-	# response.headers['X-XSS-Protection'] = '1; mode=black'
+	response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+	response.headers['X-Content-Type-Options'] = 'nosniff'
+	response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+	response.headers['X-XSS-Protection'] = '1; mode=black'
 	return response
 
 if __name__ == '__main__':
