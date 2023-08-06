@@ -26,5 +26,19 @@ def index():
 	response.headers['X-XSS-Protection'] = '1; mode=black'
 	return response
 
+
+@app.route("/about", methods=['GET'])
+@app.route("/service", methods=['GET'])
+@app.route("/price", methods=['GET'])
+@app.route("/contact", methods=['GET'])
+def puc():
+	response = make_response(render_template('puc.html',))
+	response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+	response.headers['X-Content-Type-Options'] = 'nosniff'
+	response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+	response.headers['X-XSS-Protection'] = '1; mode=black'
+	return response
+
+
 if __name__ == '__main__':
 	app.run(port = os.environ.get("PORT", 8080))
